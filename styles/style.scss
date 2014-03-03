@@ -1,0 +1,20 @@
+/*
+Theme Name:
+Theme URI:
+Description:
+Version: 1.0
+Author:
+Author URI:
+*/
+
+// Resets
+@import 'resets/normalize';
+// Base
+@import 'base/variables';
+@import 'base/utils';
+@import 'base/boilerplate';
+// Layouts
+@import 'layouts/header';
+@import 'layouts/footer';
+// Modules
+@import 'modules/nav';
