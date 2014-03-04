@@ -1,5 +1,4 @@
-Beerd
-=====
+<img src="http://mtthwbsh.com/assets/beerd.png" style="height: 200px; width: 200px;"/>
 
 Boilerplate for WordPress Themes
 
