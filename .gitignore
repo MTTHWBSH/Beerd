@@ -1,2 +1,4 @@
 .DS_store
 .ruby-version
+.sass-cache/
+node_modules/
