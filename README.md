@@ -1,4 +1,4 @@
-<img src="http://mtthwbsh.com/assets/beerd.png" style="height: 200px; width: 200px;"/>
+![logo](http://mtthwbsh.com/assets/beerd.png)
 
 Boilerplate for WordPress Themes
 
