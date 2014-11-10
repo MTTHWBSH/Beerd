@@ -1,4 +1,4 @@
-![logo](http://mtthwbsh.com/assets/beerd.png)
+![logo](images/beerd_logo_256.png)
 
 ## Boilerplate for WordPress Themes
 

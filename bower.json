@@ -1,0 +1,23 @@
+{
+  "name": "beerd",
+  "description": "Boilerplate for WordPress themes",
+  "version": "0.0.0",
+  "homepage": "https://github.com/MTTHWBSH/Beerd",
+  "authors": [
+    "Matt Bush",
+    "Rodney Dennis"
+  ],
+  "main": "page_home.php",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "normalize-scss": "~3.0.1",
+    "modernizr": "~2.8.3"
+  }
+}

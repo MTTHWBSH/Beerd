@@ -1,79 +1,65 @@
-// Load plugins
-var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    // LiveReload requires browser extensions found here: http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions
-    livereload = require('gulp-livereload'),
-    lr = require('tiny-lr'),
-    server = lr();
+// load gulp plugins
+var gulp     = require('gulp'),
+sass         = require('gulp-ruby-sass'),
+autoprefixer = require('gulp-autoprefixer'),
+jshint       = require('gulp-jshint'),
+uglify       = require('gulp-uglify'),
+rename       = require('gulp-rename'),
+concat       = require('gulp-concat'),
+notify       = require('gulp-notify'),
+cache        = require('gulp-cache'),
+livereload   = require('gulp-livereload'),
+plumber      = require('gulp-plumber'),
+del          = require('del');
 
-// Styles
+// styles
 gulp.task('styles', function() {
-  return gulp.src('./styles/style.scss')
-    .pipe(sass({ style: 'expanded', }))
+  return gulp.src('assets/styles/style.scss')
+    .pipe(plumber())
+    .pipe(sass({
+      style: 'compressed'
+    }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(minifycss())
-    .pipe(livereload(server))
-    .pipe(gulp.dest('./'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(gulp.dest(''))
+    .pipe(notify({message: 'Finished styles!'}));
 });
 
-// Scripts
-gulp.task('scripts', function() {
-  return gulp.src('./scripts/**/*.js')
+// scripts
+gulp.task('scripts', ['modernizr'], function() {
+  return gulp.src('assets/scripts/*.js')
+    .pipe(plumber())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    // Concatenate and minify scripts to main.min.js
-    .pipe(concat('main.js'))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(concat('all.js'))
     .pipe(uglify())
-    .pipe(livereload(server))
-    .pipe(gulp.dest('./scripts/'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(gulp.dest(''))
+    .pipe(notify({message: 'Finished scripts!'}));
 });
 
-// Images
-gulp.task('images', function() {
-  return gulp.src('images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(livereload(server))
-    .pipe(gulp.dest('./images/'))
-    .pipe(notify({ message: 'Images task complete' }));
+// modernizr
+gulp.task('modernizr', function() {
+  gulp.src('assets/bower_components/modernizr/modernizr.js')
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('assets/scripts/vendor/'))
 });
 
-// Templates
-gulp.task('templates', function(){
-  return gulp.src('./*.php')
-    .pipe(livereload(server))
+// clean
+gulp.task('clean', function(cb) {
+  del(['/style.css', '/all.js'], cb)
 });
 
-// Default task
-gulp.task('default', function() {
-    gulp.start('styles', 'scripts', 'images', 'templates');
-});
-
-// Watch
+// watch
 gulp.task('watch', function() {
-  // Listen on port 35729
-  server.listen(35729, function (err) {
-    if (err) {
-      return console.log(err)
-    };
-    // Watch .scss files
-    gulp.watch('./styles/**/*.scss', ['styles']);
-    // Watch .js files
-    gulp.watch('./scripts/**/*.js', ['scripts']);
-    // Watch image files
-    gulp.watch('./images/**/*', ['images']);
-    // Watch templates
-    gulp.watch('./*.php', ['templates']);
-  });
+  gulp.watch('./assets/styles/**/*.scss', ['styles']);
+  gulp.watch('./assets/scripts/**/*.js', ['scripts']);
+  // Create LiveReload server
+  livereload.listen();
+  // Watch for assets and templates, reload on change
+  gulp.watch(['**/*.php', 'assets/**/*']).on('change', livereload.changed);
+});
+
+// default
+gulp.task('default', ['clean', 'watch'], function() {
+  gulp.start(['styles', 'scripts']);
 });

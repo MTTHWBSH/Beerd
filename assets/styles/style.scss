@@ -7,14 +7,15 @@ Author:
 Author URI:
 */
 
-// Resets
-@import 'resets/normalize';
-// Base
+// base
+@import 'base/normalize';
 @import 'base/variables';
 @import 'base/utils';
 @import 'base/boilerplate';
-// Layouts
+
+// layouts
 @import 'layouts/header';
 @import 'layouts/footer';
-// Modules
+
+// modules
 @import 'modules/nav';
