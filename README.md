@@ -4,7 +4,7 @@
 
 This is for custom themes that break the regular WordPress structure; because of this, a "home" template has been created, so read settings must be changed to reflect this. Beerd uses popular tools like Bower, Gulp, Sass, Autoprefixer, and Livereload to speed up your workflow.
 
-## Get started:
+## Get started
 Insallation time! Making the most of Beerd requires a little up-front work... we know, we're sorry.
 
 #### Install [Gulp](http://gulpjs.com/)
