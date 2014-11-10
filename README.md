@@ -1,53 +1,26 @@
-![logo](images/beerd_logo_256.png)
+![logo](https://github.com/rdnydnns/Beerd/blob/master/assets/images/beerd_logo_256.png)
 
 ## Boilerplate for WordPress Themes
 
-SCSS dependencies included in CodeKit config file. Optionally compile assets in command line if no access to CodeKit.
+This is for custom themes that break the regular WordPress structure; because of this, a "home" template has been created, so read settings must be changed to reflect this. Beerd uses popular tools like Bower, Gulp, Sass, Autoprefixer, and Livereload to speed up your workflow.
 
-This is for custom themes that break the regular WordPress structure; because of this, a "home" template has been created. The read settings must be changed to reflect this.
+## Get started:
+Insallation time! Making the most of Beerd requires a little up-front work... we know, we're sorry. Beerd makes use of popular dev tools like Gulp for running tasks, Bower for managing dependencies, Sass for OOCSS, and others to speed up your workflow.
 
-## Using Gulp:
-
-Gulp uses node.js streams to complete tasks for you, fast. Using gulp is **not required** to use Beerd. If you would like to make use of gulp, the `gulpfile.js` has already been created for you so just follow the installation instructions below.
-
-Install gulp globally
-
+#### [Gulp](http://gulpjs.com/)
 ```bash
-$ npm install -g gulp
+$ npm install
+```
+Beerd's `gulpfile.js` file is configured to compile Sass into `style.css`, and concatenate scripts&mdash;minus [Modernizr](http://modernizr.com/)&mdash; into `all.js`. Both files are output into the Beerd root directory.
+
+#### [Bower](http://bower.io/)
+```bash
+$ npm install -g bower
+$ bower install
 ```
 
-`cd` to the project directory and install gulp locally
-
+#### [Sass](http://sass-lang.com/) ([via Bundler](http://bundler.io/))
 ```bash
-$ npm install gulp --save-dev
-```
-
-Beerd makes use of the following gulp plugins:
-
-- Sass compile (gulp-ruby-sass)
-- Autoprefixer (gulp-autoprefixer)
-- Minify CSS (gulp-minify-css)
-- JSHint (gulp-jshint)
-- Uglify (gulp-uglify)
-- Compress images (gulp-imagemin)
-- LiveReload (gulp-livereload, requires tiny-lr)
-- Caching of images so only changed images are compressed (gulp-cache)
-- Notify of changes (gulp-notify)
-
-Install these plugins
-
-```bash
-$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload tiny-lr gulp-cache --save-dev
-```
-
-That's it! To run the default gulp task use
-
-```bash
-$ gulp
-```
-
-To have gulp watch for file changes and livereload the browser use
-
-```bash
-$ gulp watch
+$ gem install bundler
+$ bundle install
 ```
