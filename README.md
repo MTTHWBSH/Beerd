@@ -11,7 +11,7 @@ Insallation time! Making the most of Beerd requires a little up-front work... we
 ```bash
 $ npm install
 ```
-Beerd's `gulpfile.js` file is configured to compile Sass into `style.css`, and concatenate scripts&mdash;minus [Modernizr](http://modernizr.com/)&mdash; into `all.js`. Both files are output into the Beerd root directory.
+Beerd's `gulpfile.js` file is configured to compile Sass into `style.css`, and concatenate scripts&mdash;minus [Modernizr](http://modernizr.com/)&mdash; into `all.js`. Both files are output in the Beerd root directory.
 
 #### Install [Bower](http://bower.io/)
 ```bash
