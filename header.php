@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-    <script src="<?php bloginfo('template_url'); ?>/js/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/assets/scripts/vendor/modernizr.min.js"></script>
     <?php wp_head(); ?>
   </head>
   <body>
